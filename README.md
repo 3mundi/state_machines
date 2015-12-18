@@ -37,13 +37,21 @@ Below is an example of many of the features offered by this plugin, including:
 
 Class definition:
 
+Extend your class With state machine
+```ruby
+class MyState
+  extend StateMachines::MacroMethods
+end
+```
+
 ```ruby
 class Vehicle
+  extend StateMachines::MacroMethods
   attr_accessor :seatbelt_on, :time_used, :auto_shop_busy
 
   state_machine :state, initial: :parked do
     before_transition parked: any - :parked, do: :put_on_seatbelt
-    
+
     after_transition on: :crash, do: :tow
     after_transition on: :repair, do: :fix
     after_transition any => :parked do |vehicle, transition|

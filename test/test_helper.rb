@@ -1,4 +1,5 @@
 require 'state_machines'
+require 'state_machines/core_ext'
 require 'minitest/autorun'
 begin
   require 'pry-byebug'
